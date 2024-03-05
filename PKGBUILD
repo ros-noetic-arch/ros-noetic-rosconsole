@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rosconsole'
 pkgname='ros-noetic-rosconsole'
 pkgver='1.14.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=8
+pkgrel=9
 license=('BSD')
 
 ros_makedepends=(
@@ -53,6 +53,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
         -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DCMAKE_CXX_FLAGS="-DGLOG_USE_GLOG_EXPORT" \
         -DROSCONSOLE_BACKEND=glog #log4cxx/glog/print
     make
 }
